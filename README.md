@@ -1,14 +1,8 @@
-# sqlite3.dart
+## Disclaimer
 
-This project contains Dart packages to use SQLite from Dart via `dart:ffi`.
+**Important:** By using this code,  the author will not be liable for any damages, including but not limited to direct, indirect, special, or consequential damages, arising from the use or misuse of this code. 
 
-The main package in this repository is [`sqlite3`](sqlite3), which contains all the Dart apis and their implementation.
-`package:sqlite3` is a pure-Dart package without a dependency on Flutter. 
-It can be used both in Flutter apps or in standalone Dart applications.
+This project is provided for educational and informational purposes only how to load dynamic extensions in flutter with sqlite3.dart
 
-The `sqlite3_flutter_libs` and `sqlcipher_flutter_libs` packages contain no Dart code at all. Flutter users can depend
-on one of them to include native libraries in their apps.
 
-## Example Usage
-
-A file with basic usage examples for pure Dart can be found [here](sqlite3/example/main.dart).
+Official sqlite3.dart repository  [here](https://github.com/simolus3/sqlite3.dart)
