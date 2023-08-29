@@ -1182,6 +1182,31 @@ class Bindings {
   late final _sqlite3_auto_extension = _sqlite3_auto_extensionPtr
       .asFunction<int Function(ffi.Pointer<ffi.Void>)>();
 
+  int sqlite3_load_extension(
+    ffi.Pointer<sqlite3> db,
+    ffi.Pointer<ffi.Char> zFile,
+    ffi.Pointer<ffi.Char> zProc,
+    ffi.Pointer<ffi.Pointer<ffi.Char>> pzErrMsg,
+  ) {
+    return _sqlite3_load_extension(
+      db,
+      zFile,
+      zProc,
+      pzErrMsg,
+    );
+  }
+
+  late final _sqlite3_load_extensionPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<sqlite3>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Pointer<ffi.Char>>)>>('sqlite3_load_extension');
+  late final _sqlite3_load_extension = _sqlite3_load_extensionPtr.asFunction<
+      int Function(ffi.Pointer<sqlite3>, ffi.Pointer<ffi.Char>,
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Pointer<ffi.Char>>)>();
+
   int sqlite3_db_config(
     ffi.Pointer<sqlite3> db,
     int op,
