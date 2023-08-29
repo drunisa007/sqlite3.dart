@@ -1,5 +1,5 @@
 import 'package:meta/meta.dart';
-
+import 'dart:ffi';
 import 'functions.dart';
 import 'result_set.dart';
 import 'statement.dart';
@@ -24,6 +24,8 @@ abstract class CommonDatabase {
   /// The amount of rows affected by the last `INSERT`, `UPDATE` or `DELETE`
   /// statement.
   int getUpdatedRows();
+
+  int loadExtension(Pointer<Char> extensionPath,Pointer<Char> entryData);
 
   /// An async stream of data changes happening on this database.
   ///

@@ -2,9 +2,8 @@
 library sqlite3.implementation.bindings;
 
 import 'dart:typed_data';
-
 import 'package:meta/meta.dart';
-
+import 'dart:ffi';
 import '../functions.dart';
 
 // ignore_for_file: non_constant_identifier_names
@@ -57,6 +56,7 @@ typedef RawCollation = int Function(String? a, String? b);
 
 abstract base class RawSqliteDatabase {
   int sqlite3_changes();
+  int loadExtension(Pointer<Char> extensionPath,Pointer<Char> entryData);
   int sqlite3_last_insert_rowid();
 
   int sqlite3_exec(String sql);

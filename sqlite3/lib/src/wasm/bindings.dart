@@ -1,9 +1,8 @@
 import 'dart:collection';
 import 'dart:convert';
 import 'dart:typed_data';
-
 import 'package:sqlite3/src/vfs.dart';
-
+import 'dart:ffi' as ffi;
 import '../constants.dart';
 import '../functions.dart';
 import '../implementation/bindings.dart';
@@ -244,6 +243,11 @@ final class WasmDatabase extends RawSqliteDatabase {
     bindings.callbacks.installedUpdateHook = hook;
 
     bindings.dart_sqlite3_updates(db, hook != null ? 1 : -1);
+  }
+
+  @override
+  int loadExtension(ffi.Pointer<ffi.Char> extensionPath, ffi.Pointer<ffi.Char> entryData){
+    return 100;
   }
 
   @override

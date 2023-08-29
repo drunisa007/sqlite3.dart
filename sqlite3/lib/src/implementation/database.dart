@@ -2,9 +2,8 @@ import 'dart:async';
 import 'dart:collection';
 import 'dart:convert';
 import 'dart:typed_data';
-
+import 'dart:ffi';
 import 'package:meta/meta.dart';
-
 import '../constants.dart';
 import '../database.dart';
 import '../exception.dart';
@@ -450,6 +449,11 @@ base class DatabaseImplementation implements CommonDatabase {
       },
       isBroadcast: true,
     );
+  }
+  
+  @override
+  int loadExtension(Pointer<Char> extensionPath, Pointer<Char> entryData) {
+    return database.loadExtension(extensionPath, entryData);
   }
 }
 

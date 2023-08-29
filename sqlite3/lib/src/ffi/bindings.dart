@@ -2,7 +2,7 @@ import 'dart:collection';
 import 'dart:convert';
 import 'dart:ffi';
 import 'dart:typed_data';
-
+import 'package:ffi/ffi.dart';
 import '../constants.dart';
 import '../functions.dart';
 import '../implementation/bindings.dart';
@@ -149,6 +149,27 @@ final class FfiDatabase extends RawSqliteDatabase {
 
   @override
   int sqlite3_changes() => bindings.bindings.sqlite3_changes(db);
+
+
+  @override
+  int loadExtension(Pointer<Char> extensionPath,Pointer<Char> entryData){
+ 
+    Pointer<Pointer<Char>> pzErrMsg = allocate();
+
+    final data_result = bindings.bindings.sqlite3_load_extension(db, extensionPath, entryData, pzErrMsg);
+
+    Pointer<Char> errorMsgPointer = pzErrMsg.value;
+
+    if(errorMsgPointer != nullptr){
+      print(errorMsgPointer.cast<Utf8>().toDartString());
+    }
+
+    pzErrMsg.free();
+    errorMsgPointer.free();
+    extensionPath.free();
+    entryData.free();
+    return data_result;
+  }
 
   @override
   int sqlite3_exec(String sql) {
